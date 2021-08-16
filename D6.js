@@ -446,10 +446,15 @@ let halfTree = function(num) {
     rowStars += "*";
     console.log(rowStars);
     // Start the process again with for-loop...
+
+    // More concise way?
+    // Ignore the rowStars variable and just do this inside the loop:
+    // But also change'<' to '<=' within condition inside the for-loop.
+    // console.log('*'.repeat(i));
   }
 }
 
-console.log(halfTree(3));
+//console.log(halfTree(3));
 
 /* Ex.22 
   Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
@@ -459,6 +464,34 @@ console.log(halfTree(3));
    *** 
   *****
 */
+
+function tree(num) {
+  let totalTreeWidth = 2 * num - 1; // nth odd number.
+  let starInsertIndex = Math.floor(totalTreeWidth / 2);
+  let starAmount = 1;
+  let row = "";
+
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < totalTreeWidth; j++) {
+      if (j === starInsertIndex) {
+        row += "*".repeat(starAmount);
+        j += starAmount;
+      } else {
+        row += " ";
+      }
+    }
+    row += "\n";
+    starInsertIndex--;
+    starAmount = starAmount + 2;
+  }
+
+  console.log(row);
+}
+
+
+console.time("start");
+tree(8);
+console.timeEnd("start");
 
 
 /* Ex.23
