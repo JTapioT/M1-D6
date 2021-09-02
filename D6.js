@@ -488,10 +488,8 @@ function tree(num) {
   console.log(row);
 }
 
+tree(5);
 
-console.time("start");
-tree(8);
-console.timeEnd("start");
 
 
 /* Ex.23
